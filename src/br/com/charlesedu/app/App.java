@@ -1,4 +1,5 @@
 package br.com.charlesedu.app;
+
 import java.util.List;
 
 import br.com.charlesedu.model.dao.DaoFactory;
@@ -31,5 +32,14 @@ public class App {
         for (Seller obj : list) {
             System.out.println(obj);
         }
+
+        System.out.println("\n=== TEST 4: seller insert ===");
+
+        Seller newSeller = new Seller(null, "Greg", "greg@gmail.com", new java.util.Date(), 4000.0,
+                new Department(2, null));
+
+        sellerDao.insert(newSeller);
+
+        System.out.println("Inserted! New id = " + newSeller.getId());
     }
 }

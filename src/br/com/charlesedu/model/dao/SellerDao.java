@@ -2,6 +2,7 @@ package br.com.charlesedu.model.dao;
 
 import java.util.List;
 
+import br.com.charlesedu.model.entities.Department;
 import br.com.charlesedu.model.entities.Seller;
 
 public interface SellerDao {
@@ -14,4 +15,6 @@ public interface SellerDao {
     Seller findById(Integer id);
 
     List<Seller> findAll();
+
+    List<Seller> findByDepartment(Department department);
 }

@@ -22,12 +22,22 @@ public class App2 {
             System.out.println(obj);
         }
 
-        System.out.println("\n=== TEST 3: department insert ===");
+        // System.out.println("\n=== TEST 3: department insert ===");
 
-        Department newDep = new Department(null, "Music");
+        // Department newDep = new Department(null, "Music");
 
-        departmentDao.insert(newDep);
+        // departmentDao.insert(newDep);
 
-        System.out.println("Inserted! New id = " + newDep.getId());
+        // System.out.println("Inserted! New id = " + newDep.getId());
+
+        System.out.println("\n=== TEST 4: department update ===");
+
+        dep = departmentDao.findById(1);
+
+        dep.setName("Food");
+
+        departmentDao.update(dep);
+
+        System.out.println("Update completed");
     }
 }

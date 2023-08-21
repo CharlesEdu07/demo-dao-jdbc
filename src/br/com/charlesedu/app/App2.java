@@ -21,5 +21,13 @@ public class App2 {
         for (Object obj : deps) {
             System.out.println(obj);
         }
+
+        System.out.println("\n=== TEST 3: department insert ===");
+
+        Department newDep = new Department(null, "Music");
+
+        departmentDao.insert(newDep);
+
+        System.out.println("Inserted! New id = " + newDep.getId());
     }
 }

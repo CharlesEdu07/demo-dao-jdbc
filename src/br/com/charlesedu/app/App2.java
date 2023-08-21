@@ -1,6 +1,7 @@
 package br.com.charlesedu.app;
 
 import java.util.List;
+import java.util.Scanner;
 
 import br.com.charlesedu.model.dao.DaoFactory;
 import br.com.charlesedu.model.dao.DepartmentDao;
@@ -8,6 +9,8 @@ import br.com.charlesedu.model.entities.Department;
 
 public class App2 {
     public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+
         DepartmentDao departmentDao = DaoFactory.createDepartmentDao();
 
         System.out.println("=== TEST 1: department findById ===");
@@ -39,5 +42,16 @@ public class App2 {
         departmentDao.update(dep);
 
         System.out.println("Update completed");
+
+        System.out.println("\n=== TEST 5: department delete ===");
+
+        System.out.print("Enter id for delete test: ");
+        int id = sc.nextInt();
+
+        departmentDao.deleteById(id);
+
+        System.out.println("Delete completed");
+
+        sc.close();
     }
 }

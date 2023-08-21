@@ -9,6 +9,7 @@ import java.util.List;
 
 import br.com.charlesedu.db.DB;
 import br.com.charlesedu.db.DbException;
+import br.com.charlesedu.db.DbIntegrityException;
 import br.com.charlesedu.model.dao.DepartmentDao;
 import br.com.charlesedu.model.entities.Department;
 
@@ -71,8 +72,19 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 
     @Override
     public void deleteById(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
+        PreparedStatement st = null;
+
+        try {
+            st = conn.prepareStatement("DELETE FROM department WHERE Id = ?");
+
+            st.setInt(1, id);
+
+            st.executeUpdate();
+        } catch (SQLException e) {
+            throw new DbIntegrityException(e.getMessage());
+        } finally {
+            DB.closeStatement(st);
+        }
     }
 
     @Override
